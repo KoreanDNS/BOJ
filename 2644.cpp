@@ -9,7 +9,7 @@ int main(void)
 	int v;
 	cin >> v;
 
-	vector<vector<int>> adj(v+1);
+	vector<vector<int>> adj(v + 1);
 
 	int node1, node2;
 	cin >> node1 >> node2;
@@ -17,7 +17,7 @@ int main(void)
 	int e;
 	cin >> e;
 
-	for (int idx=0; idx<e; ++idx)
+	for (int idx = 0; idx < e; ++idx)
 	{
 		int from, to;
 		cin >> from >> to;
@@ -31,10 +31,6 @@ int main(void)
 	int vis[101]{ 0 };
 	vis[node1] = 1;
 
-	int parent[101];
-	fill(parent, parent + 101, -1);
-	parent[node1] = 1;
-
 	while (false == q.empty())
 	{
 		int cur = q.front();
@@ -46,12 +42,11 @@ int main(void)
 			{
 				q.push(next);
 				vis[next] = vis[cur] + 1;
-				parent[next] = cur;
 			}
 		}
 	}
 
-    cout << (-1 == parent[node2] ? -1 : vis[node2] - 1);
+	cout << (vis[node2] ? vis[node2] - 1 : -1);
 
 	return 0;
 }
